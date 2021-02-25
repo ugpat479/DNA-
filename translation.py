@@ -1,9 +1,17 @@
-
+#!usr/bin/python
+import sys
 #mRNA will have the shape/format: 'CCUUUUUUAAUGAGUCGUGGUUGAAUUCCU'
 #codon table will have the shape/format: {'UUU':'Phe', 'UUC':'Phe', 'UUA':'Leu', 'AUG':'Met', 'UGA:STOP', .....}
 
+def init_codon_table():
+    bases = "UCAG"
+    codons = [a + b + c for a in bases for b in bases for c in bases]
+    amino_acids = 'FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG'
+    codon_table = dict(zip(codons, amino_acids))
+    return codon table
+
 def translate_mRNA(mRNA, codon_table):
-    
+    codon_table = {}
     #we find the position of the start codon
     start_index = mRNA.index('AUG')
     polypeptide = ''
@@ -34,3 +42,9 @@ def translate_mRNA(mRNA, codon_table):
         
     return polypeptide
 	
+if __name__ == "__main__":
+    mRNA = sys.argv[1]
+    codon_table = init_codon_table()
+    polypeptide = translate_mRNA(mRNA, codon_table)
+    output_str = f'Polypeptide: {polypeptide}'
+    print(output_str)
