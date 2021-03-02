@@ -11,11 +11,11 @@ def init_codon_table():
     return codon_table
 
 def translate_mRNA(mRNA, codon_table):
-    #we find the position of the start codon
+    #find the position of the start codon
     start_index = mRNA.index('AUG')
     polypeptide = ''
     
-    #we need to find the position of the stop codon
+    #need to find the position of the stop codon
     
     possible_stop_indices = []
     stop_index_UAA = mRNA.find('UAA')
@@ -30,7 +30,7 @@ def translate_mRNA(mRNA, codon_table):
     #find the first stop codon that occurs in the mRNA
     stop_index = min(possible_stop_indices)
     
-    #then we need to step through mRNA, looking at 3 characters at a time
+    #step through mRNA, looking at 3 characters at a time
     for i in range(start_index, stop_index, 3):
     
         #extract codon from mRNA string
